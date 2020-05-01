@@ -1,32 +1,71 @@
+interface CipherSettings {
+  chars: string;
+  shift: number;
+  isUpperCaseNeeded: boolean;
+}
+
+type CipherMap = Map<string, string>;
+
 export class CaesarCipher {
   private chars: string;
-  private shift = 0;
-  private cihpherMap: Map<string, string>;
+  private shift = 13;
+  private cipherMap: CipherMap;
+  private isUpperCaseNeeded: boolean;
+
+  constructor(
+    payload: CipherSettings = {
+      chars: 'abcdefghijklmnopqrstuvqxyz',
+      isUpperCaseNeeded: true,
+      shift: 13,
+    }
+  ) {
+    this.cipherSettings = payload;
+  }
 
   public encode(str: string): string {
-    return str;
+    return this.rotateChars(str, this.cipherMap);
   }
 
   public decode(str: string): string {
-    return str;
+    return this.rotateChars(str, this.reversedCipherMap);
   }
 
-  public set characters(chars: string) {
-    if (typeof chars !== 'string') {
-      throw `Type error, ${chars} is not not a string!`;
-    }
-
+  public set cipherSettings({
+    chars,
+    isUpperCaseNeeded,
+    shift,
+  }: CipherSettings) {
+    this.shift = shift;
     this.chars = chars;
+    this.isUpperCaseNeeded = isUpperCaseNeeded;
+    this.makeCipherMap();
   }
 
-  public set shiftNumber(n: number) {
-    if (Number.isNaN(n) || !Number.isInteger(n)) {
-      throw `Type error, ${n} is not not a valid integer!`;
+  private get reversedCipherMap(): CipherMap {
+    const reversedChars: [string, string][] = [...this.cipherMap.entries()].map(
+      (i) => i.reverse() as [string, string]
+    );
+    return new Map(reversedChars);
+  }
+
+  private makeCipherMap(): void {
+    let shiftedChars =
+      this.chars.slice(this.shift) + this.chars.slice(0, this.shift);
+
+    if (this.isUpperCaseNeeded) {
+      shiftedChars += shiftedChars.toUpperCase();
+      this.chars += this.chars.toUpperCase();
     }
-    this.shift = n;
+
+    this.cipherMap = new Map(
+      this.chars.split('').map((i, j) => [i, shiftedChars[j]])
+    );
   }
 
-  private rotateChars(str: string): string {
-    return str;
+  private rotateChars(str: string, cipherMap: CipherMap): string {
+    return str
+      .split('')
+      .map((i) => cipherMap.get(i) || i)
+      .join('');
   }
 }
