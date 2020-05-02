@@ -2,8 +2,8 @@
   "compilerOptions": {
     /* Basic Options */
     // "incremental": true,                   /* Enable incremental compilation */
-    "target": "ES2016",
-    "module": "commonjs",
+    "target": "ESNext",
+    "module": "ESNext",
     // "lib": [],                             /* Specify library files to be included in the compilation. */
     // "allowJs": true,                       /* Allow javascript files to be compiled. */
     // "checkJs": true,                       /* Report errors in .js files. */
@@ -21,7 +21,7 @@
     // "noEmit": true,                        /* Do not emit outputs. */
     // "importHelpers": true,                 /* Import emit helpers from 'tslib'. */
     "downlevelIteration": true,
-    // "isolatedModules": true,               /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */
+    "isolatedModules": false /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */,
 
     /* Strict Type-Checking Options */
     "strict": true,

@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { ShiftCipher } from './shift-cipher.class';
+import { ShiftCipher } from './index';
 
 describe(`Tests for ${ShiftCipher.name}`, () => {
   let cipher: ShiftCipher;

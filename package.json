@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "./dist/index.js",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "mocha -r ts-node/register src/**/*test.ts",
     "build": "tsc",
