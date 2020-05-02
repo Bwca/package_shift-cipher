@@ -8,8 +8,8 @@
     "dist"
   ],
   "scripts": {
-    "test": "mocha -r ts-node/register src/**/*test.ts",
-    "build": "tsc && terser --compress  -o ./dist/index.js --  ./dist/index.js",
+    "test": "mocha -r ts-node/register src/**/*spec.ts --module commonjs",
+    "build": "tsc --module ESNext && terser --compress  -o ./dist/index.js --  ./dist/index.js",
     "lint": "tslint -c tslint.json  -p tsconfig.json"
   },
   "repository": {
