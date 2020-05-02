@@ -1,13 +1,13 @@
 import { expect } from 'chai';
 
-import { CaesarCipher } from './caesar-cipher.class';
 import { CipherSettings } from './models/cipher-settings.model';
+import { ShiftCipher } from './shift-cipher.class';
 
-describe(`Tests for ${CaesarCipher.name}`, () => {
-  let cipher: CaesarCipher;
+describe(`Tests for ${ShiftCipher.name}`, () => {
+  let cipher: ShiftCipher;
 
   beforeEach(() => {
-    cipher = new CaesarCipher();
+    cipher = new ShiftCipher();
   });
 
   it('should be created', () => {
@@ -40,11 +40,11 @@ describe(`Tests for ${CaesarCipher.name}`, () => {
   });
 });
 
-describe(`Tests for ${CaesarCipher.name} with shift lengths exceeding the number of total characters in the provided chars string`, () => {
-  let cipher: CaesarCipher;
+describe(`Tests for ${ShiftCipher.name} with shift lengths exceeding the number of total characters in the provided chars string`, () => {
+  let cipher: ShiftCipher;
 
   beforeEach(() => {
-    cipher = new CaesarCipher();
+    cipher = new ShiftCipher();
 
     const theEnglishAlphabet = 'abcdefghijklmnopqrstuvqxyz';
 
@@ -81,11 +81,11 @@ describe(`Tests for ${CaesarCipher.name} with shift lengths exceeding the number
   });
 });
 
-describe(`Tests for ${CaesarCipher.name} with a different characters set (Cyrillic)`, () => {
-  let cipher: CaesarCipher;
+describe(`Tests for ${ShiftCipher.name} with a different characters set (Cyrillic)`, () => {
+  let cipher: ShiftCipher;
 
   beforeEach(() => {
-    cipher = new CaesarCipher();
+    cipher = new ShiftCipher();
 
     const theUkrainianAlphabet = 'абвгґдеєжзиіїйклмнопрстуфхцчшщьюя';
 

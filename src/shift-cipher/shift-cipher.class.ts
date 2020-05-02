@@ -1,7 +1,7 @@
 import { CipherMap } from './models/cipher-map.model';
 import { CipherSettings } from './models/cipher-settings.model';
 
-export class CaesarCipher {
+export class ShiftCipher {
   private cipherMap!: CipherMap;
 
   constructor() {
@@ -27,15 +27,11 @@ export class CaesarCipher {
     shiftedChars += shiftedChars.toUpperCase();
     chars += chars.toUpperCase();
 
-    this.cipherMap = new Map(
-      chars.split('').map((i, j) => [i, shiftedChars[j]])
-    );
+    this.cipherMap = new Map(chars.split('').map((i, j) => [i, shiftedChars[j]]));
   }
 
   private get reversedCipherMap(): CipherMap {
-    const reversedChars: [string, string][] = [...this.cipherMap.entries()].map(
-      (i) => i.reverse() as [string, string]
-    );
+    const reversedChars: [string, string][] = [...this.cipherMap.entries()].map((i) => i.reverse() as [string, string]);
     return new Map(reversedChars);
   }
 

@@ -1,1 +1,1 @@
-export { CaesarCipher } from './caesar-cipher/caesar-cipher.class';
+export { ShiftCipher } from './shift-cipher/shift-cipher.class';
