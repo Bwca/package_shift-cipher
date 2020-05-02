@@ -1,8 +1,5 @@
-import { CipherMap } from './models/cipher-map.model';
-import { CipherSettings } from './models/cipher-settings.model';
-
 export class ShiftCipher {
-  private cipherMap!: CipherMap;
+  private cipherMap!: Map<string, string>;
 
   constructor() {
     this.makeCipherMap({
@@ -19,7 +16,7 @@ export class ShiftCipher {
     return this.rotateChars(str, this.reversedCipherMap);
   }
 
-  public makeCipherMap({ chars, shift }: CipherSettings): void {
+  public makeCipherMap({ chars, shift }: { chars: string; shift: number }): void {
     shift %= chars.length;
 
     let shiftedChars = chars.slice(shift) + chars.slice(0, shift);
@@ -30,12 +27,12 @@ export class ShiftCipher {
     this.cipherMap = new Map(chars.split('').map((i, j) => [i, shiftedChars[j]]));
   }
 
-  private get reversedCipherMap(): CipherMap {
+  private get reversedCipherMap(): Map<string, string> {
     const reversedChars: [string, string][] = [...this.cipherMap.entries()].map((i) => i.reverse() as [string, string]);
     return new Map(reversedChars);
   }
 
-  private rotateChars(str: string, cipherMap: CipherMap): string {
+  private rotateChars(str: string, cipherMap: Map<string, string>): string {
     return str
       .split('')
       .map((i) => cipherMap.get(i) || i)

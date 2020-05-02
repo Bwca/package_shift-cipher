@@ -1,6 +1,5 @@
 import { expect } from 'chai';
 
-import { CipherSettings } from './models/cipher-settings.model';
 import { ShiftCipher } from './shift-cipher.class';
 
 describe(`Tests for ${ShiftCipher.name}`, () => {
@@ -48,7 +47,7 @@ describe(`Tests for ${ShiftCipher.name} with shift lengths exceeding the number 
 
     const theEnglishAlphabet = 'abcdefghijklmnopqrstuvqxyz';
 
-    const cipherSettings: CipherSettings = {
+    const cipherSettings = {
       chars: theEnglishAlphabet,
       shift: theEnglishAlphabet.length * 10 + 13,
     };
@@ -89,7 +88,7 @@ describe(`Tests for ${ShiftCipher.name} with a different characters set (Cyrilli
 
     const theUkrainianAlphabet = 'абвгґдеєжзиіїйклмнопрстуфхцчшщьюя';
 
-    const cipherSettings: CipherSettings = {
+    const cipherSettings = {
       chars: theUkrainianAlphabet,
       shift: theUkrainianAlphabet.length * 10 + 13,
     };

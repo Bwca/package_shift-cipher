@@ -2,18 +2,30 @@
   "name": "shift-cipher",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "test": "mocha -r ts-node/register src/**/*test.ts",
+    "build": "tsc",
     "lint": "tslint -c tslint.json  -p tsconfig.json"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Bwca/caesar-cipher.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "Caesar cipher",
+    "Caesar's cipher",
+    "shift cipher",
+    "Caesar's code",
+    "Caesar shift",
+    "ROT-13",
+    "ROT13"
+  ],
+  "author": {
+    "name": "Volodymyr Yepishev",
+    "email": "yepishevv@gmail.com"
+  },
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Bwca/caesar-cipher/issues"
   },
